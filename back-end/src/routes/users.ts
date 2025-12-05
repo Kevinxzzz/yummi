@@ -71,6 +71,7 @@ router.post("/", async (req: express.Request, res: express.Response) => {
     });
     res.status(201).json(newUser);
   } catch (error) {
+    console.log(error);
     res.status(500).send({ message: "Error creating user" });
   }
 });
