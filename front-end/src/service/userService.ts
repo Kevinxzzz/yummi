@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { CreateUser, LoginResponse, UserType } from '@/types/user';
-const API_URL = 'http://localhost:3000/users';
+const API_URL = 'https://api-yummi.onrender.com/users';
 
 export const getUser = async (id) => {
     try{

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { Recipe,RecipePayload } from '@/types/recipe';
 
-const API_URL = 'http://localhost:3000/recipes/';
+const API_URL = 'https://api-yummi.onrender.com/recipes/';
 
 export const getRecipes = async () => {
     try {
