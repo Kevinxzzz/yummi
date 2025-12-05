@@ -1,0 +1,10 @@
+{
+    "translation": {
+        "hearder": "our hearder",
+        "welcome_message": "Welcome to our application!",
+        "logout_button": "Logout",
+        "profile_settings": "Profile Settings",
+        "language_selection": "Select Language",
+        "help_center": "Help Center"
+    }
+}
