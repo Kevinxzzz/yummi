@@ -6,16 +6,18 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { MyRecipeCard } from "@/components/MyRecipesPage/MyRecipeCard";
 import type { RecipePayload } from "@/types/recipe";
+import type { Recipe } from "@/types/recipe";
+import type { RecipeType } from "@/types/recipe";
 
 interface MainMyRecipeProps {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
     handleCreateNew: () => void;
-    selectedType: string;
-    setSelectedType: (type: string) => void;
-    filteredRecipes: RecipePayload[];
+      selectedType: RecipeType | "all";
+  setSelectedType: (type: RecipeType | "all") => void;
+    filteredRecipes: Recipe[];
     isLoading: boolean;
-    clickButtonEdit: (recipeId: number) => void;
+    clickButtonEdit: (recipeId: Recipe) => void;
 }
 
 export const MainMyRecipe = ({
@@ -27,7 +29,7 @@ export const MainMyRecipe = ({
   filteredRecipes,
   isLoading,
   clickButtonEdit,
-}) => {
+}: MainMyRecipeProps) => {
   return (
     <>
       <motion.section
