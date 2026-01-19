@@ -19,7 +19,7 @@ import {
 import { Trash } from "lucide-react";
 
 
-export const ModalMyRecipes = (
+export const ModalMyRecipes = ({
     dialogOpen,
     setDialogOpen,
     editingRecipe,
@@ -31,7 +31,7 @@ export const ModalMyRecipes = (
     prepText,
     setPrepText,
     handleSave,
-    handleDeleteRecipe,
+    handleDeleteRecipe}
 ) => {
   return (
     <>
@@ -44,7 +44,7 @@ export const ModalMyRecipes = (
             </DialogTitle>
           </DialogHeader>
 
-          <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto pr-2">
+          <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto pr-2 px-2">
             <div>
               <Label>Título</Label>
               <Input
