@@ -36,19 +36,6 @@ const MyRecipes = () => {
   const [ingredientsText, setIngredientsText] = useState("");
   const [prepText, setPrepText] = useState("");
 
-  const [formData, setFormData] = useState<RecipePayload>({
-    title: "",
-    description: "",
-    type: "",
-    imageUrl: "",
-    prepTime: "",
-    servings: 1,
-    difficulty: "",
-    ingredients: [],
-    preparationMethods: [],
-    userId: 0,
-  });
-
   const emptyForm: RecipePayload = {
     title: "",
     description: "",
@@ -61,6 +48,7 @@ const MyRecipes = () => {
     preparationMethods: [],
     userId: 0,
   };
+  const [formData, setFormData] = useState<RecipePayload>(emptyForm);
 
   useEffect(() => {
     setIsLoading(true);
@@ -87,13 +75,13 @@ const MyRecipes = () => {
     setEditingRecipe(recipe);
     console.log(recipe);
 
-    // Normalizar ingredientes para texto
+    
     const normalizedIngredients = recipe.ingredients
-      .map((i) => (typeof i === "string" ? i : Object.values(i).join(" ")))
+      .flatMap((i) => (typeof i === "string" ? [i] : i.ingredients))
       .join(", ");
 
     const normalizedPrep = recipe.preparationMethods
-      .map((p) => (typeof p === "string" ? p : Object.values(p).join(" ")))
+      .flatMap((p) => (typeof p === "string" ? [p] : p.steps))
       .join(", ");
 
     setIngredientsText(normalizedIngredients);
@@ -109,12 +97,12 @@ const MyRecipes = () => {
       difficulty: recipe.difficulty,
       userId: recipe.userId,
 
-      ingredients: recipe.ingredients.map((i) =>
-        typeof i === "string" ? i : Object.values(i).join(" "),
+      ingredients: recipe.ingredients.flatMap((i) =>
+        typeof i === "string" ? [i] : i.ingredients,
       ),
 
-      preparationMethods: recipe.preparationMethods.map((p) =>
-        typeof p === "string" ? p : Object.values(p).join(" "),
+      preparationMethods: recipe.preparationMethods.flatMap((p) =>
+        typeof p === "string" ? [p] : p.steps,
       ),
     });
   };
