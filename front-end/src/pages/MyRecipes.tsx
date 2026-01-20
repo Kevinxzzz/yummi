@@ -134,7 +134,7 @@ const MyRecipes = () => {
         await postRecipe(payload);
       }
 
-      navigate("/myRecipes");
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
@@ -151,7 +151,7 @@ const MyRecipes = () => {
   const handleDeleteRecipe = async () => {
     console.log("recipe id:", editingRecipe.id);
     await deleteRecipe(editingRecipe.id);
-    navigate("/myRecipes");
+    navigate("/");
     setDialogOpen(false);
   };
 
