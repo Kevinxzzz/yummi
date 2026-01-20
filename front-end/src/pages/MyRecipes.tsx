@@ -10,6 +10,7 @@ import {
 } from "@/service/recipeService";
 import { ModalMyRecipes } from "@/components/MyRecipesPage/ModalMyRecipes";
 import { MainMyRecipe } from "@/components/MyRecipesPage/MainMyRecipes";
+import {useNavigate} from "react-router-dom";
 
 const categories = [
   { label: "Sobremesa", value: "sobremesa" },
@@ -35,7 +36,7 @@ const MyRecipes = () => {
 
   const [ingredientsText, setIngredientsText] = useState("");
   const [prepText, setPrepText] = useState("");
-
+  const navigate = useNavigate();
   const emptyForm: RecipePayload = {
     title: "",
     description: "",
@@ -133,7 +134,7 @@ const MyRecipes = () => {
         await postRecipe(payload);
       }
 
-      window.location.reload();
+      navigate("/myRecipes");
     } catch (error) {
       console.error(error);
     }
@@ -150,7 +151,7 @@ const MyRecipes = () => {
   const handleDeleteRecipe = async () => {
     console.log("recipe id:", editingRecipe.id);
     await deleteRecipe(editingRecipe.id);
-    window.location.reload();
+    navigate("/myRecipes");
     setDialogOpen(false);
   };
 
