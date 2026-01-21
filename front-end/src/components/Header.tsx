@@ -30,20 +30,14 @@ export const Header = ({open, setOpen}: SideBarType) => {
             whileHover={{ rotate: 15 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <UtensilsCrossed className="w-8 h-8 text-primary" />
+            <UtensilsCrossed className="w-5 h-5 text-primary text-xl sm:w-7 h-7 md:w-8 h-8" />
           </motion.div>
-          <h1 className="text-2xl font-bold text-foreground group-hover:text-primary transition-smooth">
-            Yummi <span className="text-3xl">🍰</span>
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground group-hover:text-primary transition-smooth">
+            Yummi <span className="text-xl sm:text-2xl md:text-3xl">🍰</span>
           </h1>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
-          <Link
-            to="/"
-            className="text-foreground hover:text-primary transition-smooth font-medium"
-          >
-            Receitas
-          </Link>
+        <nav className="flex items-center sm:gap-6 gap-4 text-xs sm:text-base ">
           <Link
             to="/about"
             className="text-foreground hover:text-primary transition-smooth font-medium"
